@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+
+function sekaiTokei()
+{
+  setInterval("timeSet()",1000);
+}
+
+function timeSet()
+{
+
+  
+  var num = document.wrdClock.city.selectedIndex;
+  var jisa = parseInt(document.wrdClock.city.options[num].value);
+
+  
+  var here= (new Date()).getTime();
+  
+  
+  var gmt = here + (new Date()).getTimezoneOffset()*60*1000;
+  
+  
+  var jikan=new Date(gmt+jisa*60*60*1000);
+
+  
+  var year = jikan.getFullYear();
+  var month= jikan.getMonth()+1;
+  var day  = jikan.getDate();
+  var hour = jikan.getHours();
+  var minu = jikan.getMinutes();
+  var sec  = jikan.getSeconds();
+
+  
+  if (hour < 10) hour="0"+hour;
+  if (minu < 10) minu="0"+minu;
+  if (sec  < 10) sec ="0"+sec;
+
+  
+  var wDate = year+"年"+month+"月"+day+"日";
+  var wTime = hour+":"+minu+":"+sec;
+  document.wrdClock.wrdTime.value = wDate+" "+wTime;
+
+}
+
+</script>
+
+
+
+
+</head>
+<body  background="09.jpg">
+
+
+
+
+
+
+<font size="6" color="#0000ff"  td align="center"> WORLD CLOCK Lite</font></td><br>
+<br/><br/>
+
+<font size="4" color="#11111"  td align="center">東京、グアム、ハワイの時間を表示します。</font></td><br>
+
+
+<br /><br/>
+<body onload="sekaiTokei()">
+
+<form name="wrdClock">
+<select name="city">
+<option value="9">東京</option>
+<option value="10">グアム</option>
+<option value="-10";>ハワイ</option>
+</select>
+<br>
+<input type="text" name="wrdTime" value="" size="30">
+</form>
+
+
+
+
+</body>
+</html>
+
